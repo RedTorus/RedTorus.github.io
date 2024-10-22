@@ -10,10 +10,10 @@
 ############################
 
 # Name of website
-title: My website
+title: Portfolio
 
 # Your name to show in the footer
-author: Some Person
+author: Kaustabh Paul
 
 ###############################################
 # --- List of links in the navigation bar --- #
@@ -21,6 +21,7 @@ author: Some Person
 
 navbar-links:
   About Me: "aboutme"
+  Resume:
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
@@ -50,7 +51,7 @@ round-avatar: true
 # You can change the order that they show up on the page by changing the order here.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
-  email: "someone@example.com"
+  email: "paul.kaustabh@gmail.com"
   rss: true  # remove this line if you don't want to show an RSS link at the bottom
   facebook: deanattali
   github: daattali
