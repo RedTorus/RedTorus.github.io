@@ -21,11 +21,10 @@ author: Kaustabh Paul
 
 navbar-links:
   About Me: "aboutme"
-  Resume:
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  Resume: "/assets/resume.pdf"
+  CV:
+  Portfolio: 
+  Ongoing Projects:
 
 ################
 # --- Logo --- #
@@ -53,12 +52,12 @@ round-avatar: true
 social-network-links:
   email: "paul.kaustabh@gmail.com"
   rss: true  # remove this line if you don't want to show an RSS link at the bottom
-  facebook: deanattali
-  github: daattali
-  twitter: daattali
-  patreon: DeanAttali
-  youtube: "@daattali"
-  whatsapp: 15551212
+#  facebook: deanattali
+  github: RedTorus
+#  twitter: daattali
+#  patreon: DeanAttali
+#  youtube: "@daattali"
+#  whatsapp: 15551212
 #  medium: yourname
 #  reddit: yourname or r/yoursubreddit
 #  linkedin: daattali
@@ -86,7 +85,7 @@ social-network-links:
 
 # If you want your website to generate an RSS feed, provide a description
 # The URL for the feed will be https://<your_website>/feed.xml
-rss-description: This website is a virtual proof that I'm awesome
+# rss-description: This website is a virtual proof that I'm awesome
 
 ###########################
 # --- General options --- #
@@ -94,10 +93,12 @@ rss-description: This website is a virtual proof that I'm awesome
 
 # Select which social network share links to show in posts
 share-links-active:
-  twitter: true
-  facebook: true
+  twitter: false
+  facebook: false
+  email: true
   linkedin: true
   vk: false
+  
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
@@ -113,7 +114,7 @@ excerpt_length: 50
 feed_show_excerpt: true
 
 # Whether or not to show a list of tags below each post preview in the feed page
-feed_show_tags: true
+feed_show_tags: false
 
 # Add a search button to the navbar
 post_search: true
