@@ -10,7 +10,7 @@ During my internship at Boardwalk Robotics Inc. I worked on developing a reinfor
 
 The simulation environment for this project was built using NVIDIA's Isaac Sim, where I implemented the Proximal Policy Optimization (PPO) algorithm, adapted from the SKRL library. My work included defining coordinate frames, applying domain randomization to enhance generalization, and tuning hyperparameters for the policy and value networks. I also designed reward functions, termination conditions, and unit tests to ensure the pipeline’s reliability and effectiveness.
 
-One of the key aspects of this project was designing a curriculum that incrementally increased task complexity. This approach allowed the RL model to learn efficiently and established a flexible simulation baseline capable of generalizing to objects of different shapes and sizes.
+One of the key aspects of this project was designing a curriculum that incrementally increased task complexity. To facilitate learning for more challenging tasks, I pre-trained the networks on simpler objectives before gradually introducing harder goals. This approach enabled efficient learning and established a flexible simulation baseline capable of generalizing to objects of different shapes and sizes.
 
 The pipeline has significant potential for sim-to-real transfer, enabling skills learned in simulation to be applied in real-world scenarios. This work lays the groundwork for Alex to perform similar pick-and-place tasks in practical applications.
 
