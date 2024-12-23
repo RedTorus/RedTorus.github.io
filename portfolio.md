@@ -19,3 +19,28 @@ As an initial project, I trained a Franka Emika Panda arm to open a drawer and m
 This experience enhanced my skills in reinforcement learning, robotics, and algorithm tuning while demonstrating the potential of simulation frameworks to address real-world robotic manipulation challenges.
 
 ## Text to Image Diffusion Model
+### course project Intro to Deep Learning
+This project involved developing a latent diffusion model conditioned on hand-drawn sketches to generate photorealistic images. The model was trained on the **Sketchy Dataset**, which contains photorealistic images paired with corresponding sketches. To optimize training time, the model focused on four classes: tiger, dog, cat, and zebra.
+
+### Key Contributions:
+- **Data Augmentation:**  
+  Implemented an edge map-based data augmentation pipeline using a pretrained ResNet model to generate simple sketches from images.  
+  - Applied this pipeline to the entirety of the Sketchy Dataset, increasing the number of sketches by 20%.  
+
+- **Latent Space Encoding:**  
+  Developed and trained a Variational Autoencoder (VAE) and Autoencoder (AE) to encode both images and sketches into a shared latent space for effective conditioning.  
+
+- **Experimentation with Diffusion Models:**  
+  Iteratively experimented with multiple diffusion models and conditioning techniques to refine the final latent diffusion model.  
+
+- **Model Pipelines and Loss Functions:**  
+  Designed and experimented with various pipelines and loss functions, including:  
+  - **L1:** Mean Squared Error (MSE) loss between actual and predicted noise from the U-Net.  
+  - **L2:** Reconstruction loss between the generated and target images.  
+
+  **Key Model Versions:**  
+  - **V4:** Trained with a combination of L1 and L2 losses.  
+  - **V5:** Trained with L1 loss only.  
+  - **V6:** Used class conditioning on both the VAE and U-Net, trained with L1 loss.  
+
+This project demonstrates the iterative development of a robust latent diffusion model, utilizing innovative data augmentation, latent space manipulation, and loss function design to achieve high-quality sketch-to-image synthesis.
