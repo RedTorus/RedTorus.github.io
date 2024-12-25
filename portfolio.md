@@ -2,13 +2,14 @@
 title: Engineering Portfolio
 subtitle: Click on an image to get started.
 ---
-
-<details>
-<summary><h2>RL for Autonomous Humanoid Bi-Manipulation</h2></summary>
+## RL for Autonomous Humanoid Bi-Manipulation
 
 ### Internship Summer 2024
 
 During my internship at Boardwalk Robotics Inc., I worked on developing a reinforcement learning (RL) pipeline for bi-manual manipulation tasks. This involved using the Sake Hands manipulators on the upper body of their humanoid robot, Alex. My primary focus was enabling Alex to pick up a book lying flat on a table.
+
+<details>
+<summary>Read more</summary>
 
 The simulation environment for this project was built using NVIDIA's Isaac Sim, where I implemented the Proximal Policy Optimization (PPO) algorithm, adapted from the SKRL library. My work included defining coordinate frames, applying domain randomization to enhance generalization, and tuning hyperparameters for the policy and value networks. I also designed reward functions, termination conditions, and unit tests to ensure the pipeline’s reliability and effectiveness.
 
@@ -24,12 +25,16 @@ This experience enhanced my skills in reinforcement learning, robotics, and algo
 
 </details>
 
-<details>
-<summary><h2>Text-to-Image Diffusion Model</h2></summary>
+---
+
+## Text-to-Image Diffusion Model
 
 ### Course Project: Intro to Deep Learning
 
 This project involved developing a latent diffusion model conditioned on hand-drawn sketches to generate photorealistic images. The model was trained on the **Sketchy Dataset**, which contains photorealistic images paired with corresponding sketches. To optimize training time, the model focused on four classes: tiger, dog, cat, and zebra.
+
+<details>
+<summary>Read more</summary>
 
 #### Key Contributions:
 - **Data Augmentation:**  
@@ -65,12 +70,16 @@ This project demonstrates the iterative development of a robust latent diffusion
 
 </details>
 
-<details>
-<summary><h2>Model-based Reinforcement Learning and Transformer Architecture in a Humanoid Robot Environment</h2></summary>
+---
+
+## Model-based Reinforcement Learning and Transformer Architecture in a Humanoid Robot Environment
 
 ### Course Project: Intro to Robot Learning
 
 This project explored integrating transformers into model-based reinforcement learning (RL) for whole-body control in humanoid robots. The primary objective was to replace traditional multi-layer perceptrons (MLPs) with a transformer architecture within the TD-MPC2 framework, enhancing performance and reducing training time.
+
+<details>
+<summary>Read more</summary>
 
 <table>
   <tr>
