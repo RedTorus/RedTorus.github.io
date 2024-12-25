@@ -24,7 +24,7 @@ This experience enhanced my skills in reinforcement learning, robotics, and algo
 ### course project Intro to Deep Learning
 This project involved developing a latent diffusion model conditioned on hand-drawn sketches to generate photorealistic images. The model was trained on the **Sketchy Dataset**, which contains photorealistic images paired with corresponding sketches. To optimize training time, the model focused on four classes: tiger, dog, cat, and zebra.
 
-### Key Contributions:
+#### Key Contributions:
 - **Data Augmentation:**  
   Implemented an edge map-based data augmentation pipeline using a pretrained ResNet model to generate simple sketches from images.  
   - Applied this pipeline to the entirety of the Sketchy Dataset, increasing the number of sketches by 20%.  
@@ -61,7 +61,36 @@ This project demonstrates the iterative development of a robust latent diffusion
 ## Model-based Reinforcement Learning and Transformer Architecture in a Humanoid Robot Environment
 ### course project Intro to Robot Learning
 
-![TD-MPC using MLPs](/assets/gifs/PureTDMPC.gif) ![TD-MPC using decision Transformer](/assets/gifs/TrafoTDMPC.gif)
+This project explored integrating transformers into model-based reinforcement learning (RL) for whole-body control in humanoid robots. The primary objective was to replace traditional multi-layer perceptrons (MLPs) with a transformer architecture within the TD-MPC2 framework, enhancing performance and reducing training time.
+
+<table>
+  <tr>
+    <td style="text-align: center;">
+      <img src="/assets/gifs/PureTDMPC.gif" alt="TD-MPC using MLPs" style="width: 300px;">
+      <p>TD-MPC using MLPs</p>
+    </td>
+    <td style="text-align: center;">
+      <img src="/assets/gifs/TrafoTDMPC.gif" alt="TD-MPC using decision Transformer" style="width: 300px;">
+      <p>TD-MPC using decision Transformer</p>
+    </td>
+  </tr>
+</table>
+
+#### Key Highlights:
+- **Transformer Integration:**  
+  A decision transformer was used to predict actions, states, rewards, and Q-values in the RL pipeline, replacing MLPs traditionally used in TD-MPC2.  
+
+- **Pretraining on MT30 Dataset:**  
+  Pretrained on 345 million transitions across 30 tasks and 11 robot models, the transformer demonstrated improved learning efficiency and smoother motion dynamics.  
+
+- **Performance Improvements:**  
+  - 54% reduction in training time with randomly initialized weights.  
+  - 27% reduction in training time with pretraining, along with smoother and more natural joint movements.  
+
+- **Task Evaluation:**  
+  Evaluated on the HumanoidBench "sit simple" task, which involves challenging contact dynamics. The transformer achieved comparable performance to traditional RL methods with reduced training time and improved motion smoothness.
+
+This work showcases the potential of transformers in robotics, offering better generalization, reduced training time, and effective handling of sequential data, paving the way for more efficient reinforcement learning frameworks in humanoid robots.
 
 [Project Report](/assets/project_reports/RobotLearningFinal_Report.pdf)
 
