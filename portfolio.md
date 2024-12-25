@@ -2,6 +2,46 @@
 title: Engineering Portfolio
 subtitle: Click on an image to get started.
 ---
+
+## Robust Control for Low-Mass Quadrotors under Wind Disturbances
+
+This project focused on developing and evaluating robust control strategies for quadrotors operating under wind disturbances, using the Crazyflie 2.0 platform. The drone was modeled with cascaded dynamics, decoupling attitude and position control. Three control algorithms were implemented: Proportional-Integral-Derivative (PID), Linear Quadratic Regulator (LQR), and Sliding Mode Control (SMC). The project followed a simulation-to-hardware pipeline to design, test, and deploy these controllers.
+
+<details>
+<summary>Read more</summary>
+
+### Key Contributions:
+1. **Simulation-to-Hardware Pipeline:**  
+   The controllers were first tested in a ROS2 and Gazebo simulation environment with wind modeling. This pipeline facilitated the transition to hardware, allowing for iterative tuning and real-world validation.  
+
+2. **Drone Modeling with Cascaded Dynamics:**  
+   The quadrotor was modeled with cascaded dynamics, which decoupled attitude control (roll, pitch, yaw) from position control. This approach simplified the design of control algorithms and enhanced stability under disturbances.  
+![Closed loop cascaded system block diagram](/assets/img/ClosedLoop.png){: .mx-auto.d-block :}
+3. **Controller Designs:**  
+   - **PID:** Provided a simple yet effective baseline for trajectory tracking and hover stability.  
+   - **LQR:** Demonstrated exceptional robustness to wind disturbances but sacrificed some position accuracy.  
+   - **SMC:** Showed high disturbance rejection capabilities but required extensive tuning to minimize chattering effects.
+
+4. **Hardware Implementation:**  
+   The Crazyflie quadrotor's firmware was modified to integrate the custom controllers, enabling dynamic selection of PID, LQR, and SMC during flight without reflashing.  
+
+5. **Wind Testing and Real-World Evaluation:**  
+   - In simulated and real-world tests, LQR excelled in orientation stability, while PID maintained moderate accuracy in trajectory tracking.  
+   - SMC handled extreme disturbances effectively but struggled with trajectory tracking due to chattering.  
+
+6. **Practical Insights:**  
+   - The study highlights the trade-offs between controller robustness and precision.  
+   - The simulation-to-hardware pipeline proved essential for bridging the sim-to-real gap, accounting for unmodeled dynamics and hardware constraints.
+
+This work demonstrated the feasibility of deploying advanced controllers on low-cost drones, showcasing applications in dynamic environments such as search-and-rescue and industrial inspections.  
+
+[Project Report](/assets/project_reports/AdvControlSysInt_Report.pdf)
+
+[GitHub Repo](https://github.com/willkraus9/GustGurus-Drone-Project)  
+
+</details>
+
+
 ## RL for Autonomous Humanoid Bi-Manipulation
 
 ### Internship Summer 2024
