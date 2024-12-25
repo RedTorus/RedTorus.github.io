@@ -56,3 +56,13 @@ This project demonstrates the iterative development of a robust latent diffusion
 [Project final presentation video](https://www.youtube.com/watch?v=I5AZhSPdTo0)
 
 [Github Repo](https://github.com/RedTorus/SketchtoImage)
+
+
+## Model-based Reinforcement Learning and Transformer Architecture in a Humanoid Robot Environment
+### course project Intro to Robot Learning
+
+![TD-MPC using MLPs](/assets/gifs/PureTDMPC.gif) ![TD-MPC using decision Transformer](/assets/gifs/TrafoTDMPC.gif)
+
+[Project Report](/assets/project_reports/RobotLearningFinal_Report.pdf)
+
+[Project Github](https://github.com/Woodwardbr/16831-project/tree/feature/hf-transformer)
