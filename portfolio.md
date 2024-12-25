@@ -10,6 +10,8 @@ During my internship at Boardwalk Robotics Inc. I worked on developing a reinfor
 
 The simulation environment for this project was built using NVIDIA's Isaac Sim, where I implemented the Proximal Policy Optimization (PPO) algorithm, adapted from the SKRL library. My work included defining coordinate frames, applying domain randomization to enhance generalization, and tuning hyperparameters for the policy and value networks. I also designed reward functions, termination conditions, and unit tests to ensure the pipeline’s reliability and effectiveness.
 
+![Isaac Sim training environment](/assets/img/TrainingIsaac.jpg){: .mx-auto.d-block :}
+
 One of the key aspects of this project was designing a curriculum that incrementally increased task complexity. To facilitate learning for more challenging tasks, I pre-trained the networks on simpler objectives before gradually introducing harder goals. This approach enabled efficient learning and established a flexible simulation baseline capable of generalizing to objects of different shapes and sizes.
 
 The pipeline has significant potential for sim-to-real transfer, enabling skills learned in simulation to be applied in real-world scenarios. This work lays the groundwork for Alex to perform similar pick-and-place tasks in practical applications.
@@ -31,7 +33,9 @@ This project involved developing a latent diffusion model conditioned on hand-dr
   Developed and trained a Variational Autoencoder (VAE) and Autoencoder (AE) to encode both images and sketches into a shared latent space for effective conditioning.  
 
 - **Experimentation with Diffusion Models:**  
-  Iteratively experimented with multiple diffusion models and conditioning techniques to refine the final latent diffusion model.  
+  Iteratively experimented with multiple diffusion models and conditioning techniques to refine the final latent diffusion model.
+  
+![Unet architecture for predicting noise (for 32x32 pixel input in lowest resolution)](/assets/img/Unet.png){: .mx-auto.d-block :}  
 
 - **Model Pipelines and Loss Functions:**  
   Designed and experimented with various pipelines and loss functions, including:  
@@ -43,4 +47,7 @@ This project involved developing a latent diffusion model conditioned on hand-dr
   - **V5:** Trained with L1 loss only.  
   - **V6:** Used class conditioning on both the VAE and U-Net, trained with L1 loss.  
 
-This project demonstrates the iterative development of a robust latent diffusion model, utilizing innovative data augmentation, latent space manipulation, and loss function design to achieve high-quality sketch-to-image synthesis.
+This project demonstrates the iterative development of a robust latent diffusion model, utilizing innovative data augmentation, latent space manipulation, and loss function design to achieve high-quality sketch-to-image synthesis. Each model was trained for 1000 epochs.
+
+![High level network architecture](/assets/img/ArchitectureD.png){: .mx-auto.d-block :}
+![V5 model output for tiger sketch](/assets/img/ResultV5.png){: .mx-auto.d-block :}
