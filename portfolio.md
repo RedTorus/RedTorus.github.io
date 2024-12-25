@@ -53,5 +53,5 @@ This project demonstrates the iterative development of a robust latent diffusion
 
 ![V5 model output for tiger sketch](/assets/img/ResultV5.png){: .mx-auto.d-block :}
 
-[Project final presentation] (https://www.youtube.com/watch?v=I5AZhSPdTo0)
-[Github Repo] (https://github.com/RedTorus/SketchtoImage)
+[Project final presentation](https://www.youtube.com/watch?v=I5AZhSPdTo0)
+[Github Repo](https://github.com/RedTorus/SketchtoImage)
