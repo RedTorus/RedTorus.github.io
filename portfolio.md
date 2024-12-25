@@ -50,4 +50,8 @@ This project involved developing a latent diffusion model conditioned on hand-dr
 This project demonstrates the iterative development of a robust latent diffusion model, utilizing innovative data augmentation, latent space manipulation, and loss function design to achieve high-quality sketch-to-image synthesis. Each model was trained for 1000 epochs.
 
 ![High level network architecture](/assets/img/ArchitectureD.png){: .mx-auto.d-block :}
+
 ![V5 model output for tiger sketch](/assets/img/ResultV5.png){: .mx-auto.d-block :}
+
+[Project final presentation] (https://www.youtube.com/watch?v=I5AZhSPdTo0)
+[Github Repo] (https://github.com/RedTorus/SketchtoImage)
