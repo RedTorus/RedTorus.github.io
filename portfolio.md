@@ -7,8 +7,7 @@ subtitle: Click on an image to get started.
 
 This project focused on developing and evaluating robust control strategies for quadrotors operating under wind disturbances, using the Crazyflie 2.0 platform. The drone was modeled with cascaded dynamics, decoupling attitude and position control. Three control algorithms were implemented: Proportional-Integral-Derivative (PID), Linear Quadratic Regulator (LQR), and Sliding Mode Control (SMC). The project followed a simulation-to-hardware pipeline to design, test, and deploy these controllers.
 
-<details>
-<summary>Read more</summary>
+<!--more-->
 
 ### Key Contributions:
 1. **Simulation-to-Hardware Pipeline:**  
@@ -39,8 +38,7 @@ This work demonstrated the feasibility of deploying advanced controllers on low-
 
 [GitHub Repo](https://github.com/willkraus9/GustGurus-Drone-Project)  
 
-</details>
-
+---
 
 ## RL for Autonomous Humanoid Bi-Manipulation
 
@@ -48,8 +46,7 @@ This work demonstrated the feasibility of deploying advanced controllers on low-
 
 During my internship at Boardwalk Robotics Inc., I worked on developing a reinforcement learning (RL) pipeline for bi-manual manipulation tasks. This involved using the Sake Hands manipulators on the upper body of their humanoid robot, Alex. My primary focus was enabling Alex to pick up a book lying flat on a table.
 
-<details>
-<summary>Read more</summary>
+<!--more-->
 
 The simulation environment for this project was built using NVIDIA's Isaac Sim, where I implemented the Proximal Policy Optimization (PPO) algorithm, adapted from the SKRL library. My work included defining coordinate frames, applying domain randomization to enhance generalization, and tuning hyperparameters for the policy and value networks. I also designed reward functions, termination conditions, and unit tests to ensure the pipeline’s reliability and effectiveness.
 
@@ -63,8 +60,6 @@ As an initial project, I trained a Franka Emika Panda arm to open a drawer and m
 
 This experience enhanced my skills in reinforcement learning, robotics, and algorithm tuning while demonstrating the potential of simulation frameworks to address real-world robotic manipulation challenges.
 
-</details>
-
 ---
 
 ## Text-to-Image Diffusion Model
@@ -73,8 +68,7 @@ This experience enhanced my skills in reinforcement learning, robotics, and algo
 
 This project involved developing a latent diffusion model conditioned on hand-drawn sketches to generate photorealistic images. The model was trained on the **Sketchy Dataset**, which contains photorealistic images paired with corresponding sketches. To optimize training time, the model focused on four classes: tiger, dog, cat, and zebra.
 
-<details>
-<summary>Read more</summary>
+<!--more-->
 
 #### Key Contributions:
 - **Data Augmentation:**  
@@ -108,8 +102,6 @@ This project demonstrates the iterative development of a robust latent diffusion
 [Project final presentation video](https://www.youtube.com/watch?v=I5AZhSPdTo0)  
 [Github Repo](https://github.com/RedTorus/SketchtoImage)
 
-</details>
-
 ---
 
 ## Model-based Reinforcement Learning and Transformer Architecture in a Humanoid Robot Environment
@@ -118,8 +110,7 @@ This project demonstrates the iterative development of a robust latent diffusion
 
 This project explored integrating transformers into model-based reinforcement learning (RL) for whole-body control in humanoid robots. The primary objective was to replace traditional multi-layer perceptrons (MLPs) with a transformer architecture within the TD-MPC2 framework, enhancing performance and reducing training time.
 
-<details>
-<summary>Read more</summary>
+<!--more-->
 
 <table>
   <tr>
@@ -153,4 +144,3 @@ This work showcases the potential of transformers in robotics, offering better g
 [Project Report](/assets/project_reports/RobotLearningFinal_Report.pdf)  
 [Project Github](https://github.com/Woodwardbr/16831-project/tree/feature/hf-transformer)
 
-</details>
