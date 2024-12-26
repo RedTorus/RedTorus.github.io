@@ -178,11 +178,21 @@ This thesis introduces optimization techniques to refine robotic grasp configura
     - Addressed edge cases, such as ambiguous coordinate definitions near object edges, by dynamically adjusting spherical parameters.
   - Implemented **force residual control** to align contact normals and reduce force imbalances.
   - Applied **moment residual control** to balance torques and achieve robust positioning.
-    <div style="display: flex; justify-content: space-around;">
-     <img src="/assets/img/ForceRes.png" alt="Force residual control algorithm" style="width: 45%;">
-     <img src="/assets/img/MomentRes.png" alt="Moment residual control algorithm" style="width: 45%;">
-   </div>
-- **Results**:
+ 
+    <table>
+     <tr>
+       <td style="text-align: center;">
+         <img src="/assets/img/ForceRes.png" alt="Force residual control algorithm" style="width: 45%;">
+         <p>Force residual control algorithm</p>
+       </td>
+       <td style="text-align: center;">
+         <img src="/assets/img/MomentRes.png" alt="Moment residual control algorithm" style="width: 45%;">
+         <p>Moment residual control algorithm</p>
+       </td>
+  </tr>
+</table>
+
+-**Results**:
   - Successfully minimized force and moment residuals for a variety of initial grasp configurations.
   - Achieved **force closure grasps** for all tested cases by reducing force residuals to near-zero values, significantly improving grasp stability.
   - Enhanced torque balance by minimizing moment residuals, resulting in better equilibrium of grasps.
