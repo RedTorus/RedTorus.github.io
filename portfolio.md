@@ -6,7 +6,7 @@ subtitle: Click on an image to get started.
 ## Robust Control for Low-Mass Quadrotors under Wind Disturbances
 
 This project focused on developing and evaluating robust control strategies for quadrotors operating under wind disturbances, using the Crazyflie 2.0 platform. The drone was modeled with cascaded dynamics, decoupling attitude and position control. Three control algorithms were implemented: Proportional-Integral-Derivative (PID), Linear Quadratic Regulator (LQR), and Sliding Mode Control (SMC). The project followed a simulation-to-hardware pipeline to design, test, and deploy these controllers.
-
+![Drone flying with SMC in z,roll and pitch direction and PID in x,y and yaw](/assets/gifs/SMChover.gif){: .mx-auto.d-block :}
 ### Key Contributions:
 1. **Simulation-to-Hardware Pipeline:**  
    The controllers were first tested in a ROS2 and Gazebo simulation environment with wind modeling. This pipeline facilitated the transition to hardware, allowing for iterative tuning and real-world validation.  
