@@ -25,10 +25,10 @@ let BeautifulJekyllJS = {
       $(".navbar").removeClass("top-nav-expanded");
     });
 
-    // Initialize functionalities
+    // show the big header image
     BeautifulJekyllJS.initImgs();
+
     BeautifulJekyllJS.initSearch();
-    BeautifulJekyllJS.initDetails(); // Initialize <details> functionality
   },
 
   initNavbar : function() {
@@ -67,17 +67,21 @@ let BeautifulJekyllJS = {
 
         const prefetchImg = new Image();
         prefetchImg.src = src;
+        // if I want to do something once the image is ready: `prefetchImg.onload = function(){}`
 
         setTimeout(function(){
           const img = $("<div></div>").addClass("big-img-transition").css("background-image", 'url(' + src + ')');
           $(".intro-header.big-img").prepend(img);
           setTimeout(function(){ img.css("opacity", "1"); }, 50);
 
+          // after the animation of fading in the new image is done, prefetch the next one
+          //img.one("transitioned webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
           setTimeout(function() {
             BeautifulJekyllJS.setImg(src, desc);
             img.remove();
             getNextImg();
           }, 1000);
+          //});
         }, 6000);
       };
 
@@ -130,41 +134,9 @@ let BeautifulJekyllJS = {
         $("body").removeClass("overflow-hidden");
       }
     });
-  },
-
-  initDetails: function() {
-    // Polyfill for <details> and <summary>
-    const detailsElements = document.querySelectorAll("details");
-
-    detailsElements.forEach((details) => {
-      if (!("open" in details)) {
-        const summary = details.querySelector("summary");
-        const content = Array.from(details.childNodes).filter(
-          (node) => node !== summary
-        );
-
-        // Initially hide the content
-        content.forEach((node) => {
-          if (node.style) {
-            node.style.display = "none";
-          }
-        });
-
-        // Toggle on summary click
-        summary.addEventListener("click", () => {
-          const isOpen = details.getAttribute("data-open") === "true";
-          details.setAttribute("data-open", !isOpen);
-
-          content.forEach((node) => {
-            if (node.style) {
-              node.style.display = isOpen ? "none" : "block";
-            }
-          });
-        });
-      }
-    });
-  },
+  }
 };
 
-// Initialize the script
+// 2fc73a3a967e97599c9763d05e564189
+
 document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
