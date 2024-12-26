@@ -1124,23 +1124,3 @@ pre {
   }
 }
 
-details {
-  margin: 1rem 0;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-}
-
-summary {
-  cursor: pointer;
-  font-weight: bold;
-  padding: 0.5rem;
-  background-color: #eaeaea;
-  border-radius: 4px;
-}
-
-details[open] summary {
-  background-color: #d9edf7;
-}
-
