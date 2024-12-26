@@ -40,7 +40,12 @@ layout: base
       {% endif %}
 
       <div class="blog-post">
-        {{ content }}
+        {% if page.excerpt %}
+          {{ page.excerpt | markdownify }}
+          <p><a href="{{ page.url | relative_url }}">Read more...</a></p>
+        {% else %}
+          {{ content }}
+        {% endif %}
       </div>
 
       {% if page.tags.size > 0 %}
