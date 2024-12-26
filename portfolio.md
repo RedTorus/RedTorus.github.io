@@ -192,6 +192,19 @@ This thesis introduces optimization techniques to refine robotic grasp configura
   </tr>
 </table>
 
+ <table>
+     <tr>
+       <td style="text-align: center;">
+         <img src="/assets/img/Force.jpeg" alt="Force residual control concept" style="width: 62%;">
+         <p>Force residual control concept</p>
+       </td>
+       <td style="text-align: center;">
+         <img src="/assets/img/Moment.jpeg" alt="Moment residual control concept" style="width: 47%;">
+         <p>Moment residual control concept</p>
+       </td>
+  </tr>
+</table>
+
 -**Results**:
   - Successfully minimized force and moment residuals for a variety of initial grasp configurations.
   - Achieved **force closure grasps** for all tested cases by reducing force residuals to near-zero values, significantly improving grasp stability.
