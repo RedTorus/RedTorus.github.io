@@ -163,3 +163,54 @@ The **Hand Slapper** is an interactive reaction time game where users attempt to
 This project highlights the STM32 microcontroller's capabilities in real-time mechatronics using bare-metal programming, demonstrating advanced control techniques in a fast-paced reaction-based gaming application.
 
 [Project Report](/assets/project_reports/AdvMechDesignReport.pdf) 
+
+## Grasp Optimization from Learning-Based Initial Guess
+### Bachelor Thesis at Chair of Information oriented Control (ITR) at TUM
+This thesis introduces optimization techniques to refine robotic grasp configurations derived from a reinforcement learning (RL) framework for the Franka Panda robot. The thesis focuses on two critical aspects: **contact position optimization** and **force optimization**, with implementation carried out in the simulation environment MuJoCo. The objective is to enhance grasp stability and efficiency through advanced optimization methods. Simulation tests were performed using a two-finger parallel jaw gripper grasping cubic objects.
+
+#### **Contact Position Optimization**
+![Before and after position optimization](/assets/img/graspBA.png){: .mx-auto.d-block :}
+- **Objective**: Refine the placement of contact points to achieve force closure and unit frictionless equilibrium (UFE).
+- **Methodology**:
+  - Developed algorithms to iteratively minimize force and moment residuals, thereby improving contact positions.
+  - Utilized local spherical coordinate parameterization for the optimization of contact points on object surfaces:
+    - Ensured the gradients of spherical coordinates aligned with surface normals.
+    - Addressed edge cases, such as ambiguous coordinate definitions near object edges, by dynamically adjusting spherical parameters.
+  - Implemented **force residual control** to align contact normals and reduce force imbalances.
+  - Applied **moment residual control** to balance torques and achieve robust positioning.
+    <div style="display: flex; justify-content: space-around;">
+     <img src="/assets/img/ForceRes.png" alt="Force residual control algorithm" style="width: 45%;">
+     <img src="/assets/img/MomentRes.png" alt="Moment residual control algorithm" style="width: 45%;">
+   </div>
+- **Results**:
+  - Successfully minimized force and moment residuals for a variety of initial grasp configurations.
+  - Achieved **force closure grasps** for all tested cases by reducing force residuals to near-zero values, significantly improving grasp stability.
+  - Enhanced torque balance by minimizing moment residuals, resulting in better equilibrium of grasps.
+  - Visual and quantitative evaluations showed clear improvements in grasp quality after optimization, demonstrated through simulation results such as reduced contact misalignments and improved contact configurations.
+  - Limitations in evaluating grasp quality metrics for smaller objects (e.g., cubes with 0.05 m edge lengths) were identified, as minor object size changes minimally affected grasp metrics.
+
+#### **Force Optimization**
+
+- **Objective**: Minimize grasping forces while maintaining stability and ensuring compliance with friction and torque constraints.
+- **Methodology**:
+  - Adopted a **Lagrangian optimization approach** to solve a convex quadratic objective function under linearized friction cone constraints.
+  - Used **IPOPT (Interior Point Optimizer)** solver for efficient computation of the optimization problem.
+  - Linearized the friction cone into pyramidal edges, with increasing precision as the number of edges was scaled up (e.g., 4, 8, 16, 32, 64 edges).
+  - Incorporated soft finger contact (SFC) models, extending the optimization to include torque constraints alongside force closure requirements.
+- **Results**:
+  - Achieved significant reductions in contact forces, with up to a **10% decrease** in required forces after optimization.
+  - Demonstrated a strong correlation between the number of linearized friction cone edges and optimized force levels, with higher edge counts leading to improved results.
+  - Validated the robustness of the force optimization framework through simulations, achieving stable and efficient grasps with the parallel jaw gripper.
+
+#### **Overall Contributions**
+
+- Successfully integrated RL-based grasp initialization with optimization techniques to enhance grasp quality, stability, and efficiency.
+- Provided detailed theoretical and practical solutions for optimizing both contact position and force, leveraging spherical coordinates for position refinement and IPOPT for solving force optimization problems.
+- Evaluated the proposed methods through simulations using a parallel jaw gripper, achieving robust and stable grasps even for simple object geometries like cubes.
+- Established a scalable framework, laying the groundwork for future extensions to more complex grippers and object geometries.
+
+This thesis represents a significant step toward deploying RL-based grasping frameworks in real-world robotic manipulation tasks, emphasizing stability, adaptability, and computational efficiency.
+
+[Thesis](/assets/KPaul_Bachelorthesis.pdf) 
+[Github Repo](https://github.com/RedTorus/Thesis)
+
