@@ -237,3 +237,37 @@ This thesis represents a significant step toward deploying RL-based grasping fra
 [Thesis](/assets/KPaul_Bachelorthesis.pdf) 
 [Github Repo](https://github.com/RedTorus/Thesis)
 
+
+## Design of a Controller for a Buck-Boost Converter
+### Course Project: Lab design and practical realization of a voltage converter 
+This project focused on designing and implementing controllers for a buck-boost converter, a critical component in power electronics used to efficiently adjust voltage levels. The primary goal was to ensure stable and regulated output voltage despite changes in input voltage or load conditions.
+
+A buck-boost converter without a controller relies entirely on the duty cycle of its switching circuit, making it highly sensitive to variations in operating conditions. Such systems often suffer from significant voltage ripple, slow transient responses, and potential instability, limiting their effectiveness in practical applications.
+
+To address these issues, I began by mathematically modeling the converter to understand its ideal and real-world behaviors. These models were validated through simulations in LTspice, helping refine the design and predict performance.
+
+#### Controller Design
+I developed both digital and analog controllers:
+1. **Digital Controller:** Implemented on an Arduino using a PI control algorithm. This controller dynamically adjusted the duty cycle, significantly improving voltage stability and reducing ripple.
+2. **Analog Controller:** Designed using operational amplifiers, it included:
+   - **Differential Amplifier:** To calculate the error signal between the desired (set) voltage and the measured output voltage.
+   - **Inverting Amplifier:** Used for proportional control, scaling the error signal by the proportional gain.
+   - **Integrator Circuit:** Designed for integral control to eliminate steady-state error, implemented using an inverting integrator configuration.
+   - **Summing Amplifier:** Combined the outputs of the proportional and integral stages to produce the final controller signal.
+
+#### PWM Generator Circuit  
+A PWM generator circuit was designed using a sawtooth generator based on a NE555 timer and a comperator to translate the controller output into a pulse-width-modulated signal. This circuit used a sawtooth waveform generator, built with a NE555 timer IC, and a comparator circuit based on an LM393 IC. The sawtooth signal was compared to the controller output to generate a precise PWM signal, which was then fed into the buck-boost converter for control.
+
+#### Handling Parasitic Capacitances  
+Parasitic capacitances in the comparator circuit and other parts of the PWM generator were mitigated by careful component selection and design. A pull-up resistor was added to stabilize the comparator output, and the rise and fall times of the PWM signal were optimized by considering the effects of parasitics. Additionally, decoupling capacitors were placed near power pins of ICs to reduce noise and stabilize the operation.
+
+#### Testing and Results  
+Noise filters were incorporated to reduce output voltage ripple further. The system was tested extensively under varying load conditions and input voltages. The controlled system demonstrated:
+- Stable output voltage regulation.
+- Improved transient response to load changes.
+- Reduced ripple compared to the uncontrolled system.
+- Higher efficiency with the analog controller.
+
+  ![Analog control of buck-boost converter with changing setpoint(purple) and corresponding PWM signal (yellow)](/assets/gifs/AnalogBuck.gif){: .mx-auto.d-block :}
+
+This project combined theoretical modeling, circuit simulation, and practical implementation, showcasing expertise in power electronics, control systems, and circuit design.
