@@ -135,3 +135,31 @@ This work showcases the potential of transformers in robotics, offering better g
 
 [Project Report](/assets/project_reports/RobotLearningFinal_Report.pdf)  
 [Project Github](https://github.com/Woodwardbr/16831-project/tree/feature/hf-transformer)
+
+## Hand Slapper: A Reaction Time Game
+### Course Project: Advanced Mechatronic Design
+
+The **Hand Slapper** is an interactive reaction time game where users attempt to avoid a motor-driven swatter while placing their hand on a sensor-equipped platform. The system integrates precise motor control, real-time feedback, and sensor validation, all managed by an STM32 microcontroller running custom bare-metal firmware. This approach involved writing the firmware from scratch, giving full control over hardware resources without relying on external libraries.
+![Demo](/assets/gifs/slapper.gif){: .mx-auto.d-block :}
+#### Hardware Design:
+- **Actuators and Sensors:**
+  - **Motor:** 12V DC motor (Pololu #4680) with encoders, controlled via an L293D motor driver.
+  - **IR Sensors (x5):** Detect user finger positions on the platform.
+  - **Force Sensitive Resistor (FSR):** Validates hand pressure for game initiation.
+  - **Control Buttons:** Start and stop gameplay.
+- **Mechanical Components:**
+  - 3D-printed motor housing, swatter mount with counterweights, and a laser-cut wooden platform.
+- **Microcontroller Usage:**
+  - **GPIOs:** ~10 for interfacing sensors, buttons, and the motor driver.
+  - **Timers:** Used for PID motor control and randomized delay generation.
+  - **Interrupts:** Ensures fast reaction to sensor inputs.
+
+#### Software and Control Logic:
+- **Bare-Metal Firmware:** Firmware was written from scratch, managing hardware directly to achieve precise control without overhead from external libraries.
+- **PID Motor Control:** Provides precise swatter motion using encoder feedback.
+- **Game State Machine:** Manages transitions between idle, gameplay, and scoring states, preventing improper hand placement.
+- **Randomized Gameplay:** Introduces dynamic delays to enhance challenge.
+
+This project highlights the STM32 microcontroller's capabilities in real-time mechatronics using bare-metal programming, demonstrating advanced control techniques in a fast-paced reaction-based gaming application.
+
+[Project Report](/assets/project_reports/AdvMechDesignReport.pdf) 
