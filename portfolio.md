@@ -237,6 +237,37 @@ This thesis represents a significant step toward deploying RL-based grasping fra
 [Thesis](/assets/KPaul_Bachelorthesis.pdf) 
 [Github Repo](https://github.com/RedTorus/Thesis)
 
+## Sound Localization and Autonomous Navigation
+### Course project:
+This project integrates sound localization, autonomous navigation, and real-time mapping to simulate a rescue scenario. A robot detects sound sources, navigates toward them, and builds a map of its environment. Implemented in ROS2 Humble, the system combines sound signal detection, SLAM, path planning, and collision monitoring.
+
+![Partial map in RVIZ](/assets/img/slam_wrld.png){: .mx-auto.d-block :}
+
+#### Key Components:
+1. **Sound Source Detection:** Detects and localizes sound sources, providing positional data for navigation.  
+2. **Path Planning and Navigation:** Plans efficient paths and dynamically avoids obstacles.  
+3. **SLAM and Collision Monitoring:** Constructs a real-time map using Simultaneous Localization and Mapping (SLAM) and ensures safety during navigation with a collision monitoring system.
+
+#### SLAM and Collision Monitoring:
+I worked on the SLAM and Navigation components. Key contributions included:  
+
+- **SLAM Configuration:**  
+  - Optimized SLAM Toolbox parameters for precise real-time mapping.  
+  - Explored alternative SLAM algorithms (e.g., Gmapping, HectorSLAM) and resolved map serialization issues.  
+
+- **Navigation Integration:**  
+  - Modified the robot’s SDF file to enable 360° LiDAR perception with an extended range of 16 meters.  
+  - Unified SLAM and Gazebo simulation into a single launch file (`Bringup.py`) for seamless operation.  
+  - Configured costmaps and goal-following behavior for efficient navigation while maintaining SLAM performance.  
+
+- **Collision Monitoring:**  
+  Integrated a collision monitor as a safety layer to prevent collisions. This system intercepted velocity commands and adjusted the robot’s path dynamically, leveraging LiDAR data to avoid obstacles without disrupting the navigation process.  
+
+This work ensured robust navigation and real-time mapping, enabling the robot to autonomously approach sound sources while maintaining environmental awareness.
+
+[Final Presentation](/assets/TAS_presentation.pdf) 
+
+[GitHub Repo](https://github.com/ydschnappi/Sound-localizaiton)
 
 ## Design of a Controller for a Buck-Boost Converter
 ### Course Project: Lab design and practical realization of a voltage converter 
