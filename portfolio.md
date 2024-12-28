@@ -49,6 +49,7 @@ The simulation environment for this project was built using NVIDIA's Isaac Sim, 
 
 ![Isaac Sim training environment](/assets/img/TrainingIsaac.jpg){: .mx-auto.d-block :}
 <small> Isaac Sim training environment </small>
+
 One of the key aspects of this project was designing a curriculum that incrementally increased task complexity. To facilitate learning for more challenging tasks, I pre-trained the networks on simpler objectives before gradually introducing harder goals. This approach enabled efficient learning and established a flexible simulation baseline capable of generalizing to objects of different shapes and sizes.
 
 The pipeline has significant potential for sim-to-real transfer, enabling skills learned in simulation to be applied in real-world scenarios. This work lays the groundwork for Alex to perform similar pick-and-place tasks in practical applications.
@@ -77,7 +78,8 @@ This project involved developing a latent diffusion model conditioned on hand-dr
   Iteratively experimented with multiple diffusion models and conditioning techniques to refine the final latent diffusion model.
   
 ![Unet architecture for predicting noise (for 32x32 pixel input in lowest resolution)](/assets/img/Unet.png){: .mx-auto.d-block :}  
-<small> </small>
+<small> Unet architecture for predicting noise (for 32x32 pixel input in lowest resolution) </small>
+
 - **Model Pipelines and Loss Functions:**  
   Designed and experimented with various pipelines and loss functions, including:  
   - **L1:** Mean Squared Error (MSE) loss between actual and predicted noise from the U-Net.  
@@ -92,8 +94,10 @@ This project demonstrates the iterative development of a robust latent diffusion
 
 ![High level network architecture](/assets/img/ArchitectureD.png){: .mx-auto.d-block :}
 <small> High level network architecture </small>
+
 ![V5 model output for tiger sketch](/assets/img/ResultV5.png){: .mx-auto.d-block :}
 <small> V5 model output for tiger sketch </small>
+
 [Project final presentation video](https://www.youtube.com/watch?v=I5AZhSPdTo0)  
 [Github Repo](https://github.com/RedTorus/SketchtoImage)
 
@@ -240,7 +244,7 @@ This thesis represents a significant step toward deploying RL-based grasping fra
 [Github Repo](https://github.com/RedTorus/Thesis)
 
 ## Sound Localization and Autonomous Navigation
-### Course project:
+### Course project: Introduction to autonomous systems
 This project integrates sound localization, autonomous navigation, and real-time mapping to simulate a rescue scenario. A robot detects sound sources, navigates toward them, and builds a map of its environment. Implemented in ROS2 Humble, the system combines sound signal detection, SLAM, path planning, and collision monitoring.
 
 ![Partial map in RVIZ](/assets/img/slam_wrld.png){: .mx-auto.d-block :}
@@ -297,4 +301,5 @@ Noise filters were incorporated to reduce output voltage ripple further. The sys
 
   ![Analog control of buck-boost converter with changing setpoint(purple) and corresponding PWM signal (yellow)](/assets/gifs/AnalogBuck.gif){: .mx-auto.d-block :}
 <small> Analog control of buck-boost converter with changing setpoint(purple) and corresponding PWM signal (yellow) </small>
+
 This project combined theoretical modeling, circuit simulation, and practical implementation, showcasing expertise in power electronics, control systems, and circuit design.
