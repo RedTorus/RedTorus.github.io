@@ -196,7 +196,7 @@ This thesis introduces optimization techniques to refine robotic grasp configura
          <p>Moment residual control algorithm</p>
        </td>
      </tr>
- </table>
+ 
 
  <table>
      <tr>
@@ -211,7 +211,7 @@ This thesis introduces optimization techniques to refine robotic grasp configura
      </tr>
   </table>
 
--**Results**:
+**Results**:
   - Successfully minimized force and moment residuals for a variety of initial grasp configurations.
   - Achieved **force closure grasps** for all tested cases by reducing force residuals to near-zero values, significantly improving grasp stability.
   - Enhanced torque balance by minimizing moment residuals, resulting in better equilibrium of grasps.
@@ -274,6 +274,30 @@ This work ensured robust navigation and real-time mapping, enabling the robot to
 [Final Presentation](/assets/TAS_presentation.pdf) 
 
 [GitHub Repo](https://github.com/ydschnappi/Sound-localizaiton)
+
+## Tour into the picture (implementation)
+### Course Project: Computer Vision
+This project is based on the paper *Tour into the Picture*, which introduces a framework for creating 3D-like navigable environments from a single 2D image by leveraging vanishing points, planar segmentation, and perspective transformations. Inspired by these concepts, the project reconstructs spatial geometry to enable interactive exploration of scenes.
+
+### Key Techniques and Implementation:
+![Poster](/assets/img/poster.png){: .mx-auto.d-block :}
+<small> Project poster </small>
+#### 1. Vanishing Point and Perspective Geometry:
+The vanishing point is identified to determine the image's perspective and spatial depth, forming the basis for dividing the image into planar regions.
+
+#### 2. Planar Segmentation and Homography:
+The image is segmented into five primary planar surfaces: the back wall, floor, ceiling, and two side walls. Homography transformations are applied to reposition these planes in a 3D space.
+
+#### 3. Foreground-Background Separation:
+Users can isolate foreground objects, which are then repositioned within the reconstructed 3D scene while the background is filled in to maintain visual consistency.
+
+#### 4. 3D Box Construction and Interaction:
+The segmented planes are assembled into a 3D box-like representation of the scene. Users can rotate, zoom, and navigate through the virtual space, simulating movement within the environment.
+
+![Demov](/assets/gifs/ComV.gif){: .mx-auto.d-block :}
+<small> Demo video </small>
+
+This project successfully implements the principles from *Tour into the Picture*, combining computer vision techniques and interactive tools to transform static images into immersive virtual experiences.
 
 ## Design of a Controller for a Buck-Boost Converter
 ### Course Project: Lab design and practical realization of a voltage converter 
