@@ -420,3 +420,20 @@ During this internship in the R&D Hardware Mechatronics (MEC) division at Siemen
 - Designed a modular documentation framework for efficient component selection across various business lines.  
 
 This experience provided valuable insights into both the technical and collaborative aspects of medical imaging systems 
+
+## Smaller Projects
+
+1. **Offline A-star Planner for Catching a Moving Target in an Arbitrary Map**  
+   Developed an offline A* planner designed to calculate a path to catch a moving target within a given map. The project involved implementing an efficient search algorithm to adapt to dynamic target movement, ensuring the planner could compute feasible paths under different conditions and map configurations.
+![pathh](/assets/img/targetpath.png){: .mx-auto.d-block :}
+<small> Path of catchhing moving target in 2D map </small>
+
+2. **Sampling-Based Planners for High-Degree-of-Freedom Robotic Arm**  
+   Implemented various sampling-based planners, including RRT, RRT-Connect, RRT*, and PRM, to plan motions for a high-degree-of-freedom robotic arm. The project focused on evaluating and comparing the performance of these planners in terms of efficiency, collision avoidance, and trajectory optimization.
+![armm](/assets/gifs/myGif11.gif){: .mx-auto.d-block :}
+<small> RRT connect plan for 5 DoF robot arm in 2D world </small>
+
+3. **CMA-ES and Imitation Learning for Bipedal Walker Control**  
+   Applied Covariance Matrix Adaptation Evolution Strategy (CMA-ES) for optimization tasks such as function maximization and control in the CartPole environment. Additionally, used imitation learning techniques for training a bipedal walker (BipedalWalker-v3) in OpenAI Gym. Approaches included regression for learning from expert demonstrations, DAgger for interactive learning, and Diffusion Policy to enhance stability and performance. These methods were aimed at improving the walker’s ability to navigate uneven terrain and maintain balance in a simulated environment, demonstrating the integration of optimization and imitation learning for robotic control tasks. The expert trajectories are supplied from PPO algorithm.
+![armm](/assets/gifs/diffusion.gif){: .mx-auto.d-block :}
+<small> Walker walking via diffusion policy </small>
