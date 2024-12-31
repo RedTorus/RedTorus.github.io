@@ -1,9 +1,30 @@
 ---
 title: Engineering Portfolio
-subtitle: Click on an image to get started.
+
 ---
+<a href="#top"> </a>
+
+| Project Name           | Key Areas                              |
+|------------------------|----------------------------------------|
+| [PRM-Based Global Body Planner for Quadruped Robot](#planner) |  Planning |
+| [Robust Control for Low-Mass Quadrotors under Wind Disturbances](#drone) | Controls, Embedded Systems |
+| [RL for Autonomous Humanoid Bi-Manipulation](#boardwalk) | Reinforcement Learning, internship  |
+| [Sketch-to-Image Diffusion Model](#imagediff) | Deep Learning |
+| [Model-based Reinforcement Learning and Transformer Architecture in a Humanoid Robot Environment](#humrl) | Reinforcement Learning |
+| [Hand Slapper: A Reaction Time Game](#slapper) | Embedded Systems, Circuit Design  |
+| [Grasp Optimization from Learning-Based Initial Guess](#thesis) | Research, Controls, Reinforcement Learning |
+| [Sound Localization and Autonomous Navigation](#slam) | SLAM, Planning |
+| [Tour into the picture (implementation)](#cv) | Computer Vision  |
+| [Self-Balancing trajectory following Robot](#balancing) | Controls, Embedded Systems |
+| [Design of a Controller for a Buck-Boost Converter](#buck) | Circuit Design, Controls, Embedded Systems |
+| [Internship at Siemens Healthineers](#siemens) | Internship, General Hardware, Embedded Systems |
+| [Offline A-star Planner for Catching a Moving Target in an Arbitrary Map](#astar) | Planning |
+| [Sampling-Based Planners for multi DoF Robotic Arm](#PRM) | Planning  |
+| [CMA-ES and Imitation Learning for Bipedal Walker Control](#biped) | Reinforcement Learning |
+
 
 ## PRM-Based Global Body Planner for Quadruped Robot
+<a name="planner"></a>
 ### Individual research + course project: Planning & Decision Making in Robotics
 
 This project developed a **Probabilistic Roadmap (PRM)-based global body planner** for a quadruped robot built atop the **QUAD SDK stack** using **ROS Noetic**. The planner introduced improvements in dynamic obstacle handling, adaptive z-height adjustments, and computational efficiency, addressing limitations in the existing **RRT-Connect-based framework**.
@@ -59,8 +80,11 @@ This project highlights how incorporating advanced planning frameworks like **La
 [Project Report](/assets/project_reports/Planning_Final_Report.pdf)  
 [GitHub Repo](https://github.com/RedTorus/quad-sdk-PlanningProject) 
 
-## Robust Control for Low-Mass Quadrotors under Wind Disturbances
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
 
+## Robust Control for Low-Mass Quadrotors under Wind Disturbances
+<a name="drone"></a>
+### Course project: Advanced Control System Integration
 This project focused on developing and evaluating robust control strategies for quadrotors operating under wind disturbances, using the Crazyflie 2.0 platform. The drone was modeled with cascaded dynamics, decoupling attitude and position control. Three control algorithms were implemented: Proportional-Integral-Derivative (PID), Linear Quadratic Regulator (LQR), and Sliding Mode Control (SMC). The project followed a simulation-to-hardware pipeline to design, test, and deploy these controllers.
 ![Drone flying with SMC in z,roll and pitch direction and PID in x,y and yaw](/assets/gifs/SMChover.gif){: .mx-auto.d-block :}
 <small> Drone flying with SMC in z,roll and pitch direction and PID in x,y and yaw </small>
@@ -91,12 +115,14 @@ This project focused on developing and evaluating robust control strategies for 
 This work demonstrated the feasibility of deploying advanced controllers on low-cost drones, showcasing applications in dynamic environments such as search-and-rescue and industrial inspections.  
 
 [Project Report](/assets/project_reports/AdvControlSysInt_Report.pdf)  
-[GitHub Repo](https://github.com/willkraus9/GustGurus-Drone-Project)  
+[GitHub Repo](https://github.com/willkraus9/GustGurus-Drone-Project) 
+
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
 
 ---
 
 ## RL for Autonomous Humanoid Bi-Manipulation
-
+<a name="boardwalk"></a>
 ### Internship Summer 2024
 
 During my internship at Boardwalk Robotics Inc., I worked on developing a reinforcement learning (RL) pipeline for bi-manual manipulation tasks. This involved using the Sake Hands manipulators on the upper body of their humanoid robot, Alex. My primary focus was enabling Alex to pick up a book lying flat on a table.
@@ -114,10 +140,12 @@ As an initial project, I trained a Franka Emika Panda arm to open a drawer and m
 
 This experience enhanced my skills in reinforcement learning, robotics, and algorithm tuning while demonstrating the potential of simulation frameworks to address real-world robotic manipulation challenges.
 
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
+
 ---
 
-## Text-to-Image Diffusion Model
-
+## Sketch-to-Image Diffusion Model
+<a name="imagediff"></a>
 ### Course Project: Intro to Deep Learning
 
 This project involved developing a latent diffusion model conditioned on hand-drawn sketches to generate photorealistic images. The model was trained on the **Sketchy Dataset**, which contains photorealistic images paired with corresponding sketches. To optimize training time, the model focused on four classes: tiger, dog, cat, and zebra.
@@ -157,10 +185,12 @@ This project demonstrates the iterative development of a robust latent diffusion
 [Project final presentation video](https://www.youtube.com/watch?v=I5AZhSPdTo0)  
 [Github Repo](https://github.com/RedTorus/SketchtoImage)
 
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
+
 ---
 
 ## Model-based Reinforcement Learning and Transformer Architecture in a Humanoid Robot Environment
-
+<a name="humrl"></a>
 ### Course Project: Intro to Robot Learning
 
 This project explored integrating transformers into model-based reinforcement learning (RL) for whole-body control in humanoid robots. The primary objective was to replace traditional multi-layer perceptrons (MLPs) with a transformer architecture within the TD-MPC2 framework, enhancing performance and reducing training time.
@@ -198,6 +228,7 @@ This work showcases the potential of transformers in robotics, offering better g
 [Project Github](https://github.com/Woodwardbr/16831-project/tree/feature/hf-transformer)
 
 ## Hand Slapper: A Reaction Time Game
+<a name="slapper"></a>
 ### Course Project: Advanced Mechatronic Design
 
 The **Hand Slapper** is an interactive reaction time game where users attempt to avoid a motor-driven swatter while placing their hand on a sensor-equipped platform. The system integrates precise motor control, real-time feedback, and sensor validation, all managed by an STM32 microcontroller running custom bare-metal firmware. This approach involved writing the firmware from scratch, giving full control over hardware resources without relying on external libraries.
@@ -226,6 +257,7 @@ This project highlights the STM32 microcontroller's capabilities in real-time me
 [Project Report](/assets/project_reports/AdvMechDesignReport.pdf) 
 
 ## Grasp Optimization from Learning-Based Initial Guess
+<a name="thesis"></a>
 ### Bachelor Thesis at Chair of Information oriented Control (ITR) at TUM
 This thesis introduces optimization techniques to refine robotic grasp configurations derived from a reinforcement learning (RL) framework for the Franka Panda robot. The thesis focuses on two critical aspects: **contact position optimization** and **force optimization**, with implementation carried out in the simulation environment MuJoCo. The objective is to enhance grasp stability and efficiency through advanced optimization methods. Simulation tests were performed using a two-finger parallel jaw gripper grasping cubic objects.
 
@@ -300,6 +332,7 @@ This thesis represents a significant step toward deploying RL-based grasping fra
 [Github Repo](https://github.com/RedTorus/Thesis)
 
 ## Sound Localization and Autonomous Navigation
+<a name="slam"></a>
 ### Course project: Introduction to autonomous systems
 This project integrates sound localization, autonomous navigation, and real-time mapping to simulate a rescue scenario. A robot detects sound sources, navigates toward them, and builds a map of its environment. Implemented in ROS2 Humble, the system combines sound signal detection, SLAM, path planning, and collision monitoring.
 
@@ -332,6 +365,7 @@ This work ensured robust navigation and real-time mapping, enabling the robot to
 [GitHub Repo](https://github.com/ydschnappi/Sound-localizaiton)
 
 ## Tour into the picture (implementation)
+<a name="cv"></a>
 ### Course Project: Computer Vision
 This project is based on the paper *Tour into the Picture*, which introduces a framework for creating 3D-like navigable environments from a single 2D image by leveraging vanishing points, planar segmentation, and perspective transformations. Inspired by these concepts, the project reconstructs spatial geometry to enable interactive exploration of scenes.
 
@@ -357,7 +391,8 @@ This project successfully implements the principles from *Tour into the Picture*
 
 [GitHub Repo](https://github.com/RedTorus/CV_G32/tree/main)
 
-## Self-Balancing trajectory following Robot Project
+## Self-Balancing trajectory following Robot
+<a name="balancing"></a>
 ### Course project: Controller Implementation on Microcontrollers
 
 This project implemented a self-balancing robot using a combination of **flatness-based control** and **PID control**. The provided hardware, including a microcontroller, sensors, and motors, was programmed to achieve dynamic balance, resist slight disturbances, and follow predefined trajectories.
@@ -403,6 +438,7 @@ This project implemented a self-balancing robot using a combination of **flatnes
 Flatness-based control provided desired velocity setpoints for trajectory tracking. PID controllers managed velocity and tilt angle, enabling the robot to maintain balance while dynamically adjusting to follow trajectories. The robot successfully resisted disturbances and demonstrated precise trajectory following, showcasing the integration of advanced control strategies and embedded systems programming.
 
 ## Design of a Controller for a Buck-Boost Converter
+<a name="buck"></a>
 ### Course Project: Lab design and practical realization of a voltage converter 
 This project focused on designing and implementing controllers for a buck-boost converter, a critical component in power electronics used to efficiently adjust voltage levels. The primary goal was to ensure stable and regulated output voltage despite changes in input voltage or load conditions.
 A buck-boost converter without a controller relies entirely on the duty cycle of its switching circuit, making it highly sensitive to variations in operating conditions. Such systems often suffer from significant voltage ripple, slow transient responses, and potential instability, limiting their effectiveness in practical applications.
@@ -431,7 +467,8 @@ Noise filters were incorporated to reduce output voltage ripple further. The sys
 
 This project combined theoretical modeling, circuit simulation, and practical implementation, showcasing expertise in power electronics, control systems, and circuit design.
 
-## Internship at Siemens Healthineers  
+## Internship at Siemens Healthineers 
+<a name="siemens"></a>
 #### Department: SHS DI XP R&D HW MEC
 #### Siemens Healthineers (SHS) Diagnostic Imaging (DI) X-ray Products (XP) (R&D) Hardware (HW) Mecatronics (MEC)
 #### Focus Area: Electronics and Components in Medical Imaging Systems
@@ -480,16 +517,16 @@ This experience provided valuable insights into both the technical and collabora
 ## Smaller Projects
 
 1. **Offline A-star Planner for Catching a Moving Target in an Arbitrary Map**  
-   Developed an offline A* planner designed to calculate a path to catch a moving target within a given map. The project involved implementing an efficient search algorithm to adapt to dynamic target movement, ensuring the planner could compute feasible paths under different conditions and map configurations.
+   <a name="astar"></a> Developed an offline A* planner designed to calculate a path to catch a moving target within a given map. The project involved implementing an efficient search algorithm to adapt to dynamic target movement, ensuring the planner could compute feasible paths under different conditions and map configurations.
 ![pathh](/assets/img/targetpath.png){: .mx-auto.d-block :}
 <small> Path of catchhing moving target in 2D map </small>
 
-2. **Sampling-Based Planners for High-Degree-of-Freedom Robotic Arm**  
-   Implemented various sampling-based planners, including RRT, RRT-Connect, RRT*, and PRM, to plan motions for a high-degree-of-freedom robotic arm. The project focused on evaluating and comparing the performance of these planners in terms of efficiency, collision avoidance, and trajectory optimization.
+2. **Sampling-Based Planners for multi DoF Robotic Arm**  
+   <a name="PRM"></a> Implemented various sampling-based planners, including RRT, RRT-Connect, RRT*, and PRM, to plan motions for a high-degree-of-freedom robotic arm. The project focused on evaluating and comparing the performance of these planners in terms of efficiency, collision avoidance, and trajectory optimization.
 ![armm](/assets/gifs/myGif11.gif){: .mx-auto.d-block :}
 <small> RRT connect plan for 5 DoF robot arm in 2D world </small>
 
 3. **CMA-ES and Imitation Learning for Bipedal Walker Control**  
-   Applied Covariance Matrix Adaptation Evolution Strategy (CMA-ES) for optimization tasks such as function maximization and control in the CartPole environment. Additionally, used imitation learning techniques for training a bipedal walker (BipedalWalker-v3) in OpenAI Gym. Approaches included regression for learning from expert demonstrations, DAgger for interactive learning, and Diffusion Policy to enhance stability and performance. These methods were aimed at improving the walker’s ability to navigate uneven terrain and maintain balance in a simulated environment, demonstrating the integration of optimization and imitation learning for robotic control tasks. The expert trajectories are supplied from PPO algorithm.
+   <a name="biped"></a> Applied Covariance Matrix Adaptation Evolution Strategy (CMA-ES) for optimization tasks such as function maximization and control in the CartPole environment. Additionally, used imitation learning techniques for training a bipedal walker (BipedalWalker-v3) in OpenAI Gym. Approaches included regression for learning from expert demonstrations, DAgger for interactive learning, and Diffusion Policy to enhance stability and performance. These methods were aimed at improving the walker’s ability to navigate uneven terrain and maintain balance in a simulated environment, demonstrating the integration of optimization and imitation learning for robotic control tasks. The expert trajectories are supplied from PPO algorithm.
 ![armm](/assets/gifs/diffusion.gif){: .mx-auto.d-block :}
 <small> Walker walking via diffusion policy </small>
