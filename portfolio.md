@@ -381,28 +381,20 @@ This project combined theoretical modeling, circuit simulation, and practical im
 #### Focus Area: Electronics and Components in Medical Imaging Systems
 
 During this internship in the R&D Hardware Mechatronics (MEC) division at Siemens Healthineers, I contributed to diagnostics, system integration, automation, and documentation of advanced medical imaging systems. 
-
----
-
 #### System Diagnostics and Testing:
-
 ##### **Display Control Boards (DCBs):**
 - Inspected functional samples for defects, verifying physical stability and firmware functionality through SSH updates.  
 - Tested DCBs in mammography systems, ensuring compatibility with production-level hardware.  
-
 ##### **Footswitch Diagnostics:**
 - Used CAN analyzers and a custom test box to analyze malfunctioning footswitches for mammography systems.  
 - Simulated pedal presses in automated testing loops to identify and document fault patterns.  
-
 ##### **Ethernet Cards:**
 - Verified 150 Ethernet cards for functionality and authenticity.  
-- Identified 73 counterfeit units and prepared detailed documentation for supplier accountability and reimbursement.  
-
+- Identified units without warranty and prepared detailed documentation for supplier accountability and reimbursement.  
 ###### **Aruba Wireless Access Points:**
 - Upgraded firmware on Aruba access points and conducted stability tests with wireless X-ray detectors in radiography and fluoroscopy systems.  
 - Analyzed system telegrams to ensure reliable communication between access points and system PCs.  
 - Compared performance metrics across firmware versions and provided recommendations for further software optimization.  
-
 ##### **Mammography Table Diagnostics:**
 - Verified the operation of table motors and integrated sensors in mammography systems.  
 - Conducted diagnostics to ensure smooth and precise table movements during clinical workflows.  
@@ -423,14 +415,8 @@ During this internship in the R&D Hardware Mechatronics (MEC) division at Siemen
 - Conducted workflow tests for the YSIO Xpree radiography system, comparing performance metrics with the YSIO Max.  
 - Analyzed time measurements and system logs to identify and resolve workflow inefficiencies.  
 
----
-
 #### Documentation and Process Optimization:
-
-##### **SLT Documentation for Mammography Systems:**
 - Migrated system documentation into a Markdown-based format using Doxygen, enhancing accessibility and usability.  
-
-##### **Baukasten (Modular System) Documentation:**
 - Designed a modular documentation framework for efficient component selection across various business lines.  
 
 This experience provided valuable insights into both the technical and collaborative aspects of medical imaging systems 
