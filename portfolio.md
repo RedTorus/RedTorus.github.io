@@ -227,6 +227,8 @@ This work showcases the potential of transformers in robotics, offering better g
 [Project Report](/assets/project_reports/RobotLearningFinal_Report.pdf)  
 [Project Github](https://github.com/Woodwardbr/16831-project/tree/feature/hf-transformer)
 
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
+
 ## Hand Slapper: A Reaction Time Game
 <a name="slapper"></a>
 ### Course Project: Advanced Mechatronic Design
@@ -255,6 +257,8 @@ The **Hand Slapper** is an interactive reaction time game where users attempt to
 This project highlights the STM32 microcontroller's capabilities in real-time mechatronics using bare-metal programming, demonstrating advanced control techniques in a fast-paced reaction-based gaming application.
 
 [Project Report](/assets/project_reports/AdvMechDesignReport.pdf) 
+
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
 
 ## Grasp Optimization from Learning-Based Initial Guess
 <a name="thesis"></a>
@@ -331,6 +335,8 @@ This thesis represents a significant step toward deploying RL-based grasping fra
 [Thesis](/assets/KPaul_Bachelorthesis.pdf) 
 [Github Repo](https://github.com/RedTorus/Thesis)
 
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
+
 ## Sound Localization and Autonomous Navigation
 <a name="slam"></a>
 ### Course project: Introduction to autonomous systems
@@ -364,6 +370,8 @@ This work ensured robust navigation and real-time mapping, enabling the robot to
 
 [GitHub Repo](https://github.com/ydschnappi/Sound-localizaiton)
 
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
+
 ## Tour into the picture (implementation)
 <a name="cv"></a>
 ### Course Project: Computer Vision
@@ -390,6 +398,8 @@ The segmented planes are assembled into a 3D box-like representation of the scen
 This project successfully implements the principles from *Tour into the Picture*, combining computer vision techniques and interactive tools to transform static images into immersive virtual experiences.
 
 [GitHub Repo](https://github.com/RedTorus/CV_G32/tree/main)
+
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
 
 ## Self-Balancing trajectory following Robot
 <a name="balancing"></a>
@@ -437,6 +447,8 @@ This project implemented a self-balancing robot using a combination of **flatnes
 #### Results:
 Flatness-based control provided desired velocity setpoints for trajectory tracking. PID controllers managed velocity and tilt angle, enabling the robot to maintain balance while dynamically adjusting to follow trajectories. The robot successfully resisted disturbances and demonstrated precise trajectory following, showcasing the integration of advanced control strategies and embedded systems programming.
 
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
+
 ## Design of a Controller for a Buck-Boost Converter
 <a name="buck"></a>
 ### Course Project: Lab design and practical realization of a voltage converter 
@@ -466,6 +478,8 @@ Noise filters were incorporated to reduce output voltage ripple further. The sys
 <small> Analog control of buck-boost converter with changing setpoint(purple) and corresponding PWM signal (yellow) </small>
 
 This project combined theoretical modeling, circuit simulation, and practical implementation, showcasing expertise in power electronics, control systems, and circuit design.
+
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
 
 ## Internship at Siemens Healthineers 
 <a name="siemens"></a>
@@ -514,6 +528,8 @@ During this internship in the R&D Hardware Mechatronics (MEC) division at Siemen
 
 This experience provided valuable insights into both the technical and collaborative aspects of medical imaging systems 
 
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
+
 ## Smaller Projects
 
 1. **Offline A-star Planner for Catching a Moving Target in an Arbitrary Map**  
@@ -530,3 +546,5 @@ This experience provided valuable insights into both the technical and collabora
    <a name="biped"></a> Applied Covariance Matrix Adaptation Evolution Strategy (CMA-ES) for optimization tasks such as function maximization and control in the CartPole environment. Additionally, used imitation learning techniques for training a bipedal walker (BipedalWalker-v3) in OpenAI Gym. Approaches included regression for learning from expert demonstrations, DAgger for interactive learning, and Diffusion Policy to enhance stability and performance. These methods were aimed at improving the walker’s ability to navigate uneven terrain and maintain balance in a simulated environment, demonstrating the integration of optimization and imitation learning for robotic control tasks. The expert trajectories are supplied from PPO algorithm.
 ![armm](/assets/gifs/diffusion.gif){: .mx-auto.d-block :}
 <small> Walker walking via diffusion policy </small>
+
+<a href="#top" class="btn btn-primary">Back to Project Selection</a>
