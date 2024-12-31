@@ -3,6 +3,62 @@ title: Engineering Portfolio
 subtitle: Click on an image to get started.
 ---
 
+## PRM-Based Global Body Planner for Quadruped Robot
+### Individual research + course project: Planning & Decision Making in Robotics
+
+This project developed a **Probabilistic Roadmap (PRM)-based global body planner** for a quadruped robot built atop the **QUAD SDK stack** using **ROS Noetic**. The planner introduced improvements in dynamic obstacle handling, adaptive z-height adjustments, and computational efficiency, addressing limitations in the existing **RRT-Connect-based framework**.
+
+#### Quad SDK
+
+Quad-SDK is an open-source ROS framework for quadruped robots, developed by Carnegie Mellon’s Robomechanics Lab. It provides modular tools for locomotion, control, and planning, supporting both real-world and simulated environments. It includes:
+
+- A **global planner** using **RRT-Connect** for path generation.
+- A **local planner**, implemented as a **Nonlinear Model Predictive Controller (NMPC)**, to refine and execute paths.
+- A **footstep planner**, responsible for optimizing foot placement in challenging terrains.
+
+#### Shortcomings of the Existing Framework
+
+- **Static z-Height Planning**: Body height adjustments were minimal, limiting adaptability to varying terrain elevations.
+- **Limited Handling of Dynamic Obstacles**: Full replanning was required when obstacles moved.
+- **Inefficient Map Reuse**: Previously generated roadmaps were discarded during replanning, increasing computational overhead.
+
+#### Project Additions
+
+To address these issues, the project implemented a **Lazy PRM-based planner** that incorporated dynamic roadmap updates and advanced search algorithms for efficient and adaptive pathfinding.
+
+##### Global Planner with Lazy PRM
+
+- Nodes represented feasible body configurations, including z-height variations based on terrain elevation.
+- A roadmap was incrementally validated and reused, avoiding redundant computations during replanning.
+- Pathfinding was enhanced using optimized search techniques for balancing efficiency and path quality.
+
+##### z-Height Integration
+
+- Integrated adaptive z-height adjustments, enabling the robot to dynamically modify its posture to maintain stability on uneven terrain.
+
+##### Dynamic Obstacle Handling
+
+- Improved responsiveness by updating roadmap edges incrementally, reducing the need for complete replanning when obstacles moved.
+
+##### Dynamic Path Refinement
+
+- Developed a **trajectory smoothing module** to optimize PRM-generated paths, ensuring dynamic feasibility and compatibility with the SDK's NMPC-based local planner.
+
+![obstacle](/assets/gifs/Obstacle.gif){: .mx-auto.d-block :}
+<small> Demo in Gazebo </small>
+
+#### Results
+
+- The **PRM-based global planner** improved adaptability to dynamic obstacles and varying terrain compared to the RRT-Connect planner.
+- Efficient map reuse and Lazy PRM validation reduced computational overhead, enabling faster responses in changing environments.
+- **z-Height adjustments** provided enhanced stability and terrain adaptability, ensuring smooth and reliable navigation.
+- The integrated system demonstrated efficient and adaptive performance in simulations involving complex and dynamic scenarios.
+
+This project highlights how incorporating advanced planning frameworks like **Lazy PRM** into modular SDKs can enhance quadruped robots' autonomous navigation capabilities for real-world applications.
+
+[Project Report](/assets/project_reports/Planning_Final_Report.pdf)  
+[GitHub Repo](https://github.com/RedTorus/quad-sdk-PlanningProject) 
+
 ## Robust Control for Low-Mass Quadrotors under Wind Disturbances
 
 This project focused on developing and evaluating robust control strategies for quadrotors operating under wind disturbances, using the Crazyflie 2.0 platform. The drone was modeled with cascaded dynamics, decoupling attitude and position control. Three control algorithms were implemented: Proportional-Integral-Derivative (PID), Linear Quadratic Regulator (LQR), and Sliding Mode Control (SMC). The project followed a simulation-to-hardware pipeline to design, test, and deploy these controllers.
