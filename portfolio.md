@@ -299,6 +299,53 @@ The segmented planes are assembled into a 3D box-like representation of the scen
 
 This project successfully implements the principles from *Tour into the Picture*, combining computer vision techniques and interactive tools to transform static images into immersive virtual experiences.
 
+[GitHub Repo](https://github.com/RedTorus/CV_G32/tree/main)
+
+## Self-Balancing trajectory following Robot Project
+### Course project: Controller Implementation on Microcontrollers
+
+This project implemented a self-balancing robot using a combination of **flatness-based control** and **PID control**. The provided hardware, including a microcontroller, sensors, and motors, was programmed to achieve dynamic balance, resist slight disturbances, and follow predefined trajectories.
+
+![balanc](/assets/gifs/selfB.gif){: .mx-auto.d-block :}
+
+#### Key Components:
+
+1. **Control Strategies:**
+   - **Flatness-Based Control:**
+     - Used for **trajectory planning** to generate the desired wheel velocity for the robot to follow a specified path.
+     - Flatness theory was leveraged to simplify the dynamic system and compute velocity setpoints based on trajectory requirements.
+
+   - **PID Control:**
+     - **Velocity Control (Outer Loop):** A PID controller compared the desired velocity (from flatness-based control) with the actual wheel velocity (from encoder feedback) and computed the tilt angle setpoint required to achieve the desired motion.
+     - **Angle Control (Inner Loop):** Another PID controller stabilized the robot's tilt by minimizing the error between the tilt angle setpoint (from the outer loop) and the measured tilt angle (from IMU data). This ensured the robot maintained balance while adjusting its tilt for motion.
+
+2. **Cascaded Control Structure:**
+   - The system was structured into two control loops:
+     - **Outer Loop (Velocity Control):** Processed velocity errors using a PID controller to compute the desired tilt angle.
+     - **Inner Loop (Angle Control):** Used a PID controller to actuate motors and stabilize the robot based on the tilt angle setpoint.
+
+3. **Sensor Fusion:**
+   - **IMU (Gyroscope and Accelerometer):** Provided angular velocity and tilt data. A **complementary filter** was used to fuse noisy sensor measurements for accurate tilt estimation.
+   - **Encoders:** Measured wheel velocity and position, providing feedback for velocity control and trajectory tracking.
+
+4. **Microcontroller and Embedded Techniques:**
+   - **Microcontroller:** ATmega32 programmed to handle control logic and hardware interfacing:
+     - **Timers:** Generated precise PWM signals to control motor speed and direction.
+     - **Interrupts:** Ensured real-time responses to encoder feedback and sensor data.
+     - **I2C Communication:** Handled data exchange with the IMU efficiently.
+   - **PWM Motor Control:** Actuated motors via an H-bridge driver circuit for smooth and precise motion.
+
+5. **Hardware Details:**
+   - Provided hardware included:
+     - A robot chassis with two DC motors for movement.
+     - An IMU for tilt detection.
+     - Wheel encoders for velocity feedback.
+     - An H-bridge driver for motor control.
+
+
+#### Results:
+Flatness-based control provided desired velocity setpoints for trajectory tracking. PID controllers managed velocity and tilt angle, enabling the robot to maintain balance while dynamically adjusting to follow trajectories. The robot successfully resisted disturbances and demonstrated precise trajectory following, showcasing the integration of advanced control strategies and embedded systems programming.
+
 ## Design of a Controller for a Buck-Boost Converter
 ### Course Project: Lab design and practical realization of a voltage converter 
 This project focused on designing and implementing controllers for a buck-boost converter, a critical component in power electronics used to efficiently adjust voltage levels. The primary goal was to ensure stable and regulated output voltage despite changes in input voltage or load conditions.
