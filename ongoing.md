@@ -1,5 +1,3 @@
-# Ongoing Work
-
 ## Ongoing Research
 ## Robomechanics Lab Carnegie Mellon University
 
