@@ -21,9 +21,8 @@ author: Kaustabh Paul
 
 navbar-links:
   Resume: "/assets/resume.pdf"
-  CV: "/assets/resume.pdf"
   Portfolio: "portfolio"
-  Ongoing Projects: 
+  Ongoing Projects: "ongoing"
 
 ################
 # --- Logo --- #
