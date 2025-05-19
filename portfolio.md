@@ -22,6 +22,35 @@ title: Engineering Portfolio
 | [Sampling-Based Planners for multi DoF Robotic Arm](#PRM) | Planning  |
 | [CMA-ES and Imitation Learning for Bipedal Walker Control](#biped) | Reinforcement Learning |
 
+# Real-Time Indoor Mapping with RTAB-Map: CPU-Level Parallelism and Descriptor Selection for Precise 3D Reconstruction
+<a name="rtabmap"></a>
+**High-Level Overview**  
+This project extends RTAB-Map’s real-time SLAM pipeline by integrating CPU-level parallelism and evaluating feature pipelines, resulting in up to **1.8×** mapping throughput without sacrificing map precision using a rigorous ground-truth evaluation framework :contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}.
+
+**Background**  
+Simultaneous Localization and Mapping (SLAM) requires a balance between computational efficiency and mapping accuracy, particularly in large-scale indoor environments. RTAB-Map leverages RGB-D sensors and pose-graph optimization via Ceres to generate 3D maps in real time. However, its sequential architecture underutilizes multicore CPUs, creating an opportunity for parallel acceleration. A precise evaluation of map accuracy necessitates generating ground-truth point clouds from SDF-defined geometries and aligning SLAM outputs using ICP and bidirectional distance metrics.
+
+![mappings](/assets/gifs/mapping.gif){: .mx-auto.d-block :}
+<small> Demo </small>
+
+**Methodology & Key Contributions**  
+- **CPU-Level Parallelization with OpenMP:** Front-end loops for feature extraction and matching, and back-end loops for Jacobian assembly and information-matrix reduction, were parallelized using `#pragma omp parallel for` and thread-local buffers, achieving near-linear scaling up to eight cores.  
+- **Descriptor Pipeline Benchmarking:** ORB, SURF, SIFT, and FREAK were systematically swapped into RTAB-Map’s feature pipeline to analyze speed–accuracy trade-offs. SURF and SIFT improved RMSE by over **10%** compared to the default configuration, while ORB delivered the fastest extraction at the cost of increased mean error.  
+- **Ground-Truth Generation & Evaluation:** Custom scripts parsed Gazebo’s SDF world to sample dense point clouds from box primitives. Open3D’s ICP alignments with a 1 m threshold and bidirectional nearest-neighbor distances produced mean distance, RMSE, maximum deviation, and Chamfer distance metrics, enabling quantitative comparison of SLAM outputs.  
+- **Ceres Solver Configuration:** The optimizer was configured to exploit all available CPU threads (`options.num_threads = omp_get_max_threads()`), reducing average pose-graph solve time from **0.0923 s** to **0.0767 s** while preserving convergence properties.
+
+**Results**  
+- **Throughput Improvement:** Overall mapping speed increased by **1.8×**.  
+- **Pose-Graph Optimization:** Average solver time decreased from **0.0923 s** to **0.0767 s**.  
+- **Feature Accuracy:** SURF achieved a mean error of **0.42 mm**, SIFT **0.57 mm**, and ORB **2.76 mm**.  
+- **Scaling Efficiency:** Speedup remained near-linear up to **8 threads**, with marginal gains beyond.
+
+![speedup wm](/assets/img/parallel_slam.png){: .mx-auto.d-block :}
+<small> Optimization time of sequential and parallel CERES solver wrt to working memory (WM) size </small>
+
+**Conclusion**  
+By fusing CPU-level parallel acceleration with a systematic feature-pipeline evaluation and a rigorous ground-truth framework, this project demonstrates meaningful real-time SLAM improvements. Future efforts can explore GPU offloading, dynamic scene adaptation, and multimodal sensor integration to further enhance mapping speed and robustness.
+
 
 ## PRM-Based Global Body Planner for Quadruped Robot
 <a name="planner"></a>
