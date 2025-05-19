@@ -22,6 +22,55 @@ title: Engineering Portfolio
 | [Sampling-Based Planners for multi DoF Robotic Arm](#PRM) | Planning  |
 | [CMA-ES and Imitation Learning for Bipedal Walker Control](#biped) | Reinforcement Learning |
 
+# Parallelizing Convolutional Neural Networks in AlphaZero for Faster Inference
+<a name="parallel"></a>
+**High-Level Overview**  
+AlphaZero is a self‐play reinforcement learning algorithm that guides Monte Carlo Tree Search with a deep CNN. In checkers—played on an 8×8 board where each cell may be empty, contain a red or white man, or a red or white king—this project implements pure-CUDA convolution kernels to accelerate inference, obtaining up to **4.9×** speedup on an NVIDIA Tesla T4 GPU and **12.7×** on a CPU versus the LibTorch baseline.
+
+**Network Architecture**  
+- **Board Representation:** 8×8 grid encoded as 5 binary feature planes (empty, red man, white man, red king, white king)  
+- **Input Block:** 5→128 channels via 3×3 convolutions  
+- **Torso Blocks (×5):** 128→128 channels, two sequential 3×3 convolutions with residual connections  
+- **Output Heads:**  
+  - **Value head:** 1×1 convolution (128→1) + two fully-connected layers → scalar  
+  - **Policy head:** 1×1 convolution (128→2) + masking and softmax over 64 positions  
+
+**Methodology & Key Contributions**  
+- **GPU Architecture (Tesla T4):**  
+  - 40 SMs, 2560 CUDA cores, 64 KB shared memory per SM, 150 GB/s DRAM bandwidth  
+- **Memory Layout & Bank-Conflict Avoidance:**  
+  - Designed shared-memory tiling and padding so 32-byte transactions align to eliminate conflicts across the 32 banks.  
+  - Arranged input activations and filter weights for coalesced loads and one-cycle shared-memory access per warp.  
+- **Custom CUDA Kernels:**  
+  - **Input Layer Kernel:**  
+    - Tiled the 5 feature planes into shared memory; each block computes an 8×8 output tile for one channel entirely in registers.  
+    - Achieved **4.9×** GPU and **12.7×** CPU speedup.  
+  - **Torso Layer Kernels:**  
+    - Staged 128-channel tiles conflict-free in shared memory; performed two 3×3 convolutions per tile with explicit register-based residual adds.  
+    - Achieved **1.05×** GPU and **0.80×** CPU speedup.  
+  - **Output Heads Kernels:**  
+    - Applied the same tiling strategy to 1×1 convolutions for the value and policy heads.  
+    - Observed **2.2×** GPU and **0.7×** CPU speedup.  
+
+**Results**  
+| Component                                     | GPU Speedup | CPU Speedup |
+|-----------------------------------------------|------------:|------------:|
+| **Input Layer Kernel**                        |       4.9×  |     12.7×   |
+| **Torso Layer Kernels**                       |       1.05× |      0.80×  |
+| **Output Heads Kernels**                      |       2.2×  |      0.70×  |
+| **Semi-Model Pipeline**<br>*(input + one torso + output + Norm/ReLU)* | 0.55×  | 0.71×   |
+
+**Conclusion & Future Work**  
+Replacing each convolution with an optimized CUDA kernel yields large per-layer speedups, but the combined “semi-model” pipeline is slower (0.55× GPU, 0.71× CPU) due to:  
+- **Kernel Launch Overhead:** Each layer incurs launch latency and separate memory staging.  
+- **Global Memory Traffic:** Intermediate results are written back to DRAM rather than staying in faster shared memory across kernels.  
+- **Lack of Layer Fusion:** Without fusing multiple layers into a single kernel, data must traverse the memory hierarchy multiple times.  
+
+Future work will fuse consecutive layers into unified kernels to reduce launch overhead and DRAM round-trips, explore tensor-core acceleration, and integrate these kernels into the full AlphaZero training/inference loop while ensuring numerical stability.
+
+[Project Report](/assets/project_reports/FC2_report.pdf)  
+[GitHub Repo](https://github.com/RedTorus/parallel_CNN_alpha_zero) 
+
 # Real-Time Indoor Mapping with RTAB-Map: CPU-Level Parallelism and Descriptor Selection for Precise 3D Reconstruction
 <a name="rtabmap"></a>
 **High-Level Overview**  
@@ -50,6 +99,9 @@ Simultaneous Localization and Mapping (SLAM) requires a balance between computat
 
 **Conclusion**  
 By fusing CPU-level parallel acceleration with a systematic feature-pipeline evaluation and a rigorous ground-truth framework, this project demonstrates meaningful real-time SLAM improvements. Future efforts can explore GPU offloading, dynamic scene adaptation, and multimodal sensor integration to further enhance mapping speed and robustness.
+
+[Project Report](/assets/project_reports/SLAM_Final_Report.pdf)  
+[GitHub Repo](https://github.com/RedTorus/SLAM_project) 
 
 
 ## PRM-Based Global Body Planner for Quadruped Robot
