@@ -6,6 +6,9 @@ title: Engineering Portfolio
 
 | Project Name           | Key Areas                              |
 |------------------------|----------------------------------------|
+| [Optimizing Diffusion-Based Model-Free Off-Policy RL](#diffrl) |  Reinforcement Learning, Deep Learning |
+| [Parallelizing Convolutional Neural Networks in AlphaZero for Faster Inference](#parallel) |  CUDA, Parallel Programming, Deep Learning |
+| [Real-Time Indoor Mapping with RTAB-Map: CPU-Level Parallelism and Descriptor Selection for Precise 3D Reconstruction](#rtabmap) |  SLAM, Parallel Programming |
 | [PRM-Based Global Body Planner for Quadruped Robot](#planner) |  Planning |
 | [Robust Control for Low-Mass Quadrotors under Wind Disturbances](#drone) | Controls, Embedded Systems |
 | [RL for Autonomous Humanoid Bi-Manipulation](#boardwalk) | Reinforcement Learning, internship  |
@@ -21,6 +24,53 @@ title: Engineering Portfolio
 | [Offline A-star Planner for Catching a Moving Target in an Arbitrary Map](#astar) | Planning |
 | [Sampling-Based Planners for multi DoF Robotic Arm](#PRM) | Planning  |
 | [CMA-ES and Imitation Learning for Bipedal Walker Control](#biped) | Reinforcement Learning |
+
+# Optimizing Diffusion-Based Model-Free Off-Policy RL
+<a name="diffrl"></a>
+**High-Level Overview**  
+This project investigates online, model-free, off-policy diffusion-based reinforcement learning by implementing and evaluating two recent algorithms—DIffusion POlicy (DIPO) and Q-weighted Variational Policy Optimization (QVPO)—across a variety of diffusion samplers. Experiments on MuJoCo locomotion and D4RL manipulation tasks characterize sampler effects on convergence speed, sample efficiency, and training stability, yielding practical guidance for deploying diffusion policies in contact-rich environments.
+
+**Policy & Critic Architectures**  
+- **Actor (Diffusion Denoiser):** A conditional denoising model $\epsilon_\theta(a_t, s, t)$ implemented as a 4-layer MLP (256 hidden units per layer; 512 for high-dimensional tasks), taking noisy action $a_t$, state $s$, and a 2-layer sinusoidal timestep embedding as input.  
+- **Critic (Twin Q-Networks):** 4-layer MLPs producing $Q_\phi(s,a)$; target network parameters updated via soft-updates  
+  $$\phi^- \leftarrow \tau\,\phi + (1-\tau)\,\phi^-$$ to stabilize learning.  
+
+
+**Methodology & Key Contributions**  
+- **Diffusion Sampler Suite**  
+  - **SDE-Based Samplers**  
+    - **Euler–Maruyama (DDPM):** First-order SDE discretization used in standard DDPM training.  
+    - **Heun’s Method (2nd-Order):** Improved SDE integration with a predictor–corrector step for reduced bias.  
+    - **Predictor–Corrector (Langevin-Style):** Combines Euler steps with added noise corrections for sharper posterior sampling.  
+  - **ODE-Based Samplers**  
+    - **DDIM (1st-Order):** Deterministic sampler derived from the diffusion ODE, trading randomness for speed.  
+    - **k-Step Linear Multistep (4th-Order):** High-order multistep integrator that reuses past gradients for greater accuracy.  
+    - **Classical RK4:** Four-stage Runge–Kutta method applied to the diffusion ODE for accurate state propagation.  
+    - **DPM-Solver (Exponential Integrator):** Exponential integrator tailored to diffusion models for fast, high-fidelity sampling.  
+- **Supervised Pretraining:** Actor warm-start on expert demonstrations (10 000 and 50 000 steps) to embed useful behavior priors before RL fine-tuning.  
+- **Off-Policy RL Loop:** Replay buffer seeded with both expert and random transitions; actor and critic updated according to DIPO’s Q-gradient relabeling and QVPO’s Q-weighted loss.  
+ 
+- **Evaluation Pipeline:**  
+  - *Environments:* OpenAI Gym MuJoCo tasks (HalfCheetah-v2, Ant-v2, Hopper-v2) and D4RL Adroit manipulation tasks (Pen Spin, Object Relocate).  
+  - *Metrics:* Episodic return, actor MSE denoiser loss, critic TD-error across multiple seeds and training budgets.
+
+**Results**  
+| Task               | Sampler        | Avg. Return    | Critic TD-Error | Key Finding                              |
+|--------------------|----------------|--------------:|---------------:|------------------------------------------|
+| **HalfCheetah-v2** | k-LMS (4th-order) |     > 6 500   |      Low Var. | Best overall convergence and stability   |
+|                    | DPM-Solver     |     ~ 6 200   |   Moderate Var.| Strong speed-fidelity trade-off          |
+|                    | DDIM           |     ~ 5 500   |     High Var. | Slowest convergence, highest variance    |
+| **Object Relocate**| DIPO & QVPO    |   – 20 to – 30|      High Var. | Pretraining yields negligible reward gain|
+| **Pen Spin**       | DIPO           |   Sparse spikes around 0 | Variable | Occasional successes; high variance       |
+
+- **Sampler Impact:** Heun’s method yields smoother learning curves; Predictor-Corrector exhibits large spikes in critic error.  
+- **Pretraining Effects:** More pretraining steps reduce actor MSE but can destabilize critic updates, giving only modest gains on manipulation tasks.
+
+**Conclusion & Future Directions**  
+Sampler choice strongly influences diffusion-policy performance: higher-order ODE integrators (k-LMS, DPM-Solver) outperform standard DDPM/DDIM in both speed and stability. Supervised warm-starts provide useful priors but limited final improvements, highlighting the need for enhanced exploration strategies, adaptive sampler schedules, and task-specific network scaling. Future work will explore layer-wise sampler selection, dynamic architectures, and evaluations on more complex multimodal control domains.
+
+[Project Report](/assets/project_reports/Deepgen.pdf)  
+[GitHub Repo](https://github.com/RedTorus/diffRL)
 
 # Parallelizing Convolutional Neural Networks in AlphaZero for Faster Inference
 <a name="parallel"></a>
@@ -53,12 +103,8 @@ AlphaZero is a self‐play reinforcement learning algorithm that guides Monte Ca
     - Observed **2.2×** GPU and **0.7×** CPU speedup.  
 
 **Results**  
-| Component                                     | GPU Speedup | CPU Speedup |
-|-----------------------------------------------|------------:|------------:|
-| **Input Layer Kernel**                        |       4.9×  |     12.7×   |
-| **Torso Layer Kernels**                       |       1.05× |      0.80×  |
-| **Output Heads Kernels**                      |       2.2×  |      0.70×  |
-| **Semi-Model Pipeline**<br>*(input + one torso + output + Norm/ReLU)* | 0.55×  | 0.71×   |
+
+![speedup kernel](/assets/img/speedup_table.png){: .mx-auto.d-block :}
 
 **Conclusion & Future Work**  
 Replacing each convolution with an optimized CUDA kernel yields large per-layer speedups, but the combined “semi-model” pipeline is slower (0.55× GPU, 0.71× CPU) due to:  
