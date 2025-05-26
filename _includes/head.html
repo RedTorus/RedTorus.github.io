@@ -35,7 +35,7 @@
 
   {% capture author %}
     {%- if page.author -%}
-      {{  page.author | strip_html }}
+      {{ page.author | strip_html }}
     {%- elsif site.author -%}
       {{ site.author }}
     {%- endif -%}
@@ -62,7 +62,22 @@
   {% include gtm_head.html %}
   {% include google_analytics.html %}
   {% include cloudflare_analytics.html %}
-  {% include mathjax.html %}
+
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script
+    async
+    id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
 
   {% if layout.common-ext-css %}
     {% for css in layout.common-ext-css %}
@@ -87,7 +102,7 @@
       {% include ext-css.html css=css %}
     {% endfor %}
   {% endif %}
-  
+
   {% if page.css %}
     {% for css in page.css %}
       <link rel="stylesheet" href="{{ css | relative_url }}">
@@ -95,14 +110,14 @@
   {% endif %}
 
   {% if site.fb_app_id %}
-  <meta property="fb:app_id" content="{{ site.fb_app_id }}">
+    <meta property="fb:app_id" content="{{ site.fb_app_id }}">
   {% endif %}
 
   {% if site.title %}
-  <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:site_name" content="{{ site.title }}">
   {% endif %}
 
-  {%- capture img -%}
+  {% capture img %}
     {%- if page.share-img -%}
       {{ page.share-img }}
     {%- elsif page.cover-img -%}
@@ -115,55 +130,53 @@
       {{ page.thumbnail-img }}
     {%- elsif site.avatar -%}
       {{ site.avatar }}
-    {% endif %}
-  {%- endcapture -%}
-  {%- assign img=img | strip -%}
+    {%- endif -%}
+  {% endcapture %}
+  {% assign img = img | strip %}
 
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
 
   {% if img != "" %}
-  <meta property="og:image" content="{{ img | absolute_url }}">
+    <meta property="og:image" content="{{ img | absolute_url }}">
   {% endif %}
 
   {% if page.id %}
-  <meta property="og:type" content="article">
-  {% if author != "" %}
-  <meta property="og:article:author" content="{{ author }}">
-  {% endif %}
-  <meta property="og:article:published_time" content="{{ page.date | date_to_xmlschema }}">
-  <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:type" content="article">
+    {% if author != "" %}
+      <meta property="og:article:author" content="{{ author }}">
+    {% endif %}
+    <meta property="og:article:published_time" content="{{ page.date | date_to_xmlschema }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
   {% else %}
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ page.url | absolute_url | strip_index }}">
-  <link rel="canonical" href="{{ page.url | absolute_url | strip_index }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url | strip_index }}">
+    <link rel="canonical" href="{{ page.url | absolute_url | strip_index }}">
   {% endif %}
 
   {% if img != "" and img != site.avatar %}
-  <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image">
   {% else %}
-  <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary">
   {% endif %}
   <meta name="twitter:site" content="@{{ site.social-network-links.twitter }}">
   <meta name="twitter:creator" content="@{{ site.social-network-links.twitter }}">
-
   <meta property="twitter:title" content="{{ title }}">
   <meta property="twitter:description" content="{{ description }}">
-
   {% if img != "" %}
-  <meta name="twitter:image" content="{{ img | absolute_url }}">
+    <meta name="twitter:image" content="{{ img | absolute_url }}">
   {% endif %}
 
   {% include matomo.html %}
 
   {% if page.comments and site.staticman.repository and site.staticman.branch %}
-  <link rel="stylesheet" href="{{ "/assets/css/staticman.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/staticman.css" | relative_url }}">
   {% endif %}
 
   {% assign favicon_exists = site.static_files | where: "path", "/favicon.ico" | size %}
   {% if favicon_exists == 1 %}
-  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" />
+    <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
   {% endif %}
 
   {% if page.head-extra %}
