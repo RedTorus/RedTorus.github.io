@@ -55,13 +55,7 @@ This project investigates online, model-free, off-policy diffusion-based reinfor
   - *Metrics:* Episodic return, actor MSE denoiser loss, critic TD-error across multiple seeds and training budgets.
 
 **Results**  
-| Task               | Sampler        | Avg. Return    | Critic TD-Error | Key Finding                              |
-|--------------------|----------------|--------------:|---------------:|------------------------------------------|
-| **HalfCheetah-v2** | k-LMS (4th-order) |     > 6 500   |      Low Var. | Best overall convergence and stability   |
-|                    | DPM-Solver     |     ~ 6 200   |   Moderate Var.| Strong speed-fidelity trade-off          |
-|                    | DDIM           |     ~ 5 500   |     High Var. | Slowest convergence, highest variance    |
-| **Object Relocate**| DIPO & QVPO    |   – 20 to – 30|      High Var. | Pretraining yields negligible reward gain|
-| **Pen Spin**       | DIPO           |   Sparse spikes around 0 | Variable | Occasional successes; high variance       |
+![difftable](/assets/img/DiffTable.png){: .mx-auto.d-block :}
 
 - **Sampler Impact:** Heun’s method yields smoother learning curves; Predictor-Corrector exhibits large spikes in critic error.  
 - **Pretraining Effects:** More pretraining steps reduce actor MSE but can destabilize critic updates, giving only modest gains on manipulation tasks.
@@ -120,7 +114,7 @@ Future work will fuse consecutive layers into unified kernels to reduce launch o
 # Real-Time Indoor Mapping with RTAB-Map: CPU-Level Parallelism and Descriptor Selection for Precise 3D Reconstruction
 <a name="rtabmap"></a>
 **High-Level Overview**  
-This project extends RTAB-Map’s real-time SLAM pipeline by integrating CPU-level parallelism and evaluating feature pipelines, resulting in up to **1.8×** mapping throughput without sacrificing map precision using a rigorous ground-truth evaluation framework :contentReference[oaicite:0]{index=0}:contentReference[oaicite:1]{index=1}.
+This project extends RTAB-Map’s real-time SLAM pipeline by integrating CPU-level parallelism and evaluating feature pipelines, resulting in up to **1.8×** mapping throughput without sacrificing map precision using a rigorous ground-truth evaluation framework.
 
 **Background**  
 Simultaneous Localization and Mapping (SLAM) requires a balance between computational efficiency and mapping accuracy, particularly in large-scale indoor environments. RTAB-Map leverages RGB-D sensors and pose-graph optimization via Ceres to generate 3D maps in real time. However, its sequential architecture underutilizes multicore CPUs, creating an opportunity for parallel acceleration. A precise evaluation of map accuracy necessitates generating ground-truth point clouds from SDF-defined geometries and aligning SLAM outputs using ICP and bidirectional distance metrics.
